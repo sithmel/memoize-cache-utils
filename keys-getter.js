@@ -5,9 +5,12 @@ module.exports = function (func, prefix) {
   func = func || function () { return '_default'; };
   return function () {
     var args = Array.prototype.slice.call(arguments);
-    var k = func.apply(undefined, args);
-    var newKey = stringifyKey(k);
-    if (newKey === null) return null;
-    return prefix + newKey;
+    var keys = func.apply(undefined, args);
+    if (!Array.isArray(keys)) {
+      return [];
+    }
+    return keys.map(stringifyKey)
+      .filter(function (k) { return k !== null; })
+      .map(function (k) { return prefix + k; });
   };
 };
