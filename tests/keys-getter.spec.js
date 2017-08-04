@@ -32,4 +32,8 @@ describe('keys-getter', function () {
     assert.deepEqual(getKey2('1'), ['v2_1']);
   });
 
+  it('return default', function () {
+    var getKey3 = keysGetter();
+    assert.deepEqual(getKey3('1'), []);
+  });
 });

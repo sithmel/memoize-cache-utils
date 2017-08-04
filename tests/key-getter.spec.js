@@ -32,4 +32,8 @@ describe('key-getter', function () {
     assert.equal(getKey2('1'), 'v2_1');
   });
 
+  it('return default', function () {
+    var getKey3 = keyGetter();
+    assert.equal(getKey3('1'), '_default');
+  });
 });

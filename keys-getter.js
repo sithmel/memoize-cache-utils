@@ -2,7 +2,7 @@ var stringifyKey = require('./stringify-key');
 
 module.exports = function (func, prefix) {
   prefix = prefix || '';
-  func = func || function () { return '_default'; };
+  func = func || function () { return []; };
   return function () {
     var args = Array.prototype.slice.call(arguments);
     var keys = func.apply(undefined, args);
